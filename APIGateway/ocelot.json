@@ -1,0 +1,31 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "your_microservice_host",
+          "Port": "your_microservice_port"
+        }
+      ],
+      "UpstreamPathTemplate": "/{microserviceName}/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "microserviceName",
+      "Config": [
+        {
+          "Name": "Microservice API",
+          "Version": "v1",
+          "Url": "http://your_microservice_host:your_microservice_port/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:your_gateway_port"
+  }
+}

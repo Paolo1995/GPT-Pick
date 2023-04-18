@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: YourPick
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: YourPick
+  template:
+    metadata:
+      labels:
+        app: YourPick
+    spec:
+      containers:
+      - name: YourPick
+        image: YourPick
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: YourPick
+spec:
+  selector:
+    app: YourPick
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
